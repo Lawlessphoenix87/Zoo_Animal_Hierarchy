@@ -25,7 +25,7 @@ public abstract class Animal
     // ======== METHOD LIBRARY ========
     public String describe()
     {
-        return getClass().getSimpleName() + ":" + _name + ", age " + _age 
+        return getClass().getSimpleName() + ": " + _name + ", age " + _age 
             + ", " + _weight + " kg";
     }
 
