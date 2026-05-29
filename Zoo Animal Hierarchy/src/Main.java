@@ -35,6 +35,9 @@ public class Main
                     break;
                 case 3:
                     feedAnimal(zoo, input);
+                    break;
+                case 4:
+                    addNewAnimal(zoo, input);
                     break; 
                 case 6:
                 {
@@ -63,7 +66,7 @@ public class Main
         System.out.println("=======================");
         System.out.print("Enter choice: ");
         
-        return choice = verifyHasInt(input);
+        return choice = verifyHasInt(input, 0, 6);
     }
 
     public static void listAllAnimals(ArrayList<Animal> zoo)
@@ -78,7 +81,7 @@ public class Main
     {
         listAllAnimals(zoo);
         System.out.print("Which animal's sound would you like to hear? ");
-        int choice = verifyHasInt(input);
+        int choice = verifyHasInt(input, 0, zoo.size());
         Animal a = zoo.get(choice - 1);
         System.out.println(a._name + " says " + a.makeSound());
     }
@@ -87,12 +90,64 @@ public class Main
     {
         listAllAnimals(zoo);
         System.out.print("Which animal would you like to feed? ");
-        int choice = verifyHasInt(input);
+        int choice = verifyHasInt(input, 0, zoo.size());
         Animal a = zoo.get(choice - 1);
         System.out.println(a._name + " is eathing " + a.getFavoriteFood() + ".");
     }
 
+    public static void addNewAnimal(ArrayList<Animal> zoo, Scanner input)
+    {
+        System.out.print("Which type of new animal? ");
+        String animalType = input.nextLine();
+        if(animalType.equalsIgnoreCase("Dog"))
+        {
+            System.out.print("Enter name:");
+            String name = input.nextLine();
+            System.out.print("Enter age: ");
+            int age = verifyHasInt(input, 0, 500);
+            System.out.print("Enter weight in kg: ");
+            double weight = input.nextDouble();
 
+            Dog d = new Dog(name, age, weight);
+            zoo.add(d);
+        }
+        else if(animalType.equalsIgnoreCase("Cat"))
+        {
+            System.out.print("Enter name:");
+            String name = input.nextLine();
+            System.out.print("Enter age: ");
+            int age = verifyHasInt(input, 0, 500);
+            System.out.print("Enter weight in kg: ");
+            double weight = input.nextDouble();
+
+            Cat c = new Cat(name, age, weight);
+            zoo.add(c);
+        }
+        else if(animalType.equalsIgnoreCase("Bird"))
+        {
+            System.out.print("Enter name:");
+            String name = input.nextLine();
+            System.out.print("Enter age: ");
+            int age = verifyHasInt(input, 0, 500);
+            System.out.print("Enter weight in kg: ");
+            double weight = input.nextDouble();
+            input.nextLine();
+            System.out.print("Can it fly? (Y/N)");
+            char ch = input.nextLine().charAt(0);
+            boolean canFly;
+            if( ch == 'y' || ch == 'Y')
+            {
+                canFly = true;
+            } 
+            else
+            {
+                canFly = false;
+            }
+            Bird b = new Bird(name, age, weight, canFly);
+            zoo.add(b);
+            
+        }
+    }
 
 
     // ____________________HELPER METHODS___________________
@@ -103,14 +158,14 @@ public class Main
         zoo.add(b);
     }
 
-    public static int verifyHasInt(Scanner input)
+    public static int verifyHasInt(Scanner input, int low, int hi)
     { 
         int choice = 0;
         if(input.hasNextInt())// checks if the input has an int
         {
             choice = input.nextInt();
             input.nextLine();
-            if(choice > 0 && choice <= 6)// checks that the choice is in range
+            if(choice > low && choice <= hi)// checks that the choice is in range
             {
                 return choice;
             }
