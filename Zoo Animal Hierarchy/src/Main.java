@@ -32,9 +32,16 @@ public class Main
                     break;
                 case 2:
                     hearAnimalSound(zoo, input);
+                    break;
+                case 3:
+
+                    break; 
                 case 6:
+                {
+                    System.out.println("Zoo closing for the night. Goodbye!");
                     quit = true;
                     break;
+                }
             }
 
        }while(!quit);
@@ -47,7 +54,7 @@ public class Main
 
     public static int displayMenu(Scanner input)
     {
-        int choice = 0;
+        int choice;
 
         System.out.println("===== ZOO MANAGER =====");
         System.out.println("1. List all animals \n2. Hear an animal's sound " 
@@ -61,9 +68,9 @@ public class Main
 
     public static void listAllAnimals(ArrayList<Animal> zoo)
     {
-        for(int i = 1; i < zoo.size() + 1; i++)
+        for(int i = 0; i < zoo.size(); i++)
         {
-            System.out.println(i + ". " + zoo.get(i - 1).describe());
+            System.out.println((i +1) + ". " + zoo.get(i).describe());
         }
     }
 
@@ -75,6 +82,8 @@ public class Main
         System.out.println(zoo.get(choice - 1)._name + " says " 
             + zoo.get(choice - 1).makeSound());
     }
+
+
 
 
     // ____________________HELPER METHODS___________________
