@@ -34,7 +34,7 @@ public class Main
                     hearAnimalSound(zoo, input);
                     break;
                 case 3:
-
+                    feedAnimal(zoo, input);
                     break; 
                 case 6:
                 {
@@ -79,8 +79,17 @@ public class Main
         listAllAnimals(zoo);
         System.out.print("Which animal's sound would you like to hear? ");
         int choice = verifyHasInt(input);
-        System.out.println(zoo.get(choice - 1)._name + " says " 
-            + zoo.get(choice - 1).makeSound());
+        Animal a = zoo.get(choice - 1);
+        System.out.println(a._name + " says " + a.makeSound());
+    }
+
+    public static void feedAnimal(ArrayList<Animal> zoo, Scanner input)
+    {
+        listAllAnimals(zoo);
+        System.out.print("Which animal would you like to feed? ");
+        int choice = verifyHasInt(input);
+        Animal a = zoo.get(choice - 1);
+        System.out.println(a._name + " is eathing " + a.getFavoriteFood() + ".");
     }
 
 
