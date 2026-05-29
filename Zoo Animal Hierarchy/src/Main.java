@@ -30,6 +30,8 @@ public class Main
                 case 1:
                     listAllAnimals(zoo);
                     break;
+                case 2:
+                    hearAnimalSound(zoo, input);
                 case 6:
                     quit = true;
                     break;
@@ -40,12 +42,8 @@ public class Main
     }
 
 
-    public static void prepopulateZoo(ArrayList<Animal> zoo, Dog d, Cat c, Bird b)
-    {
-        zoo.add(d);
-        zoo.add(c);
-        zoo.add(b);
-    }
+
+    //      ========METHOD LIBRARY========
 
     public static int displayMenu(Scanner input)
     {
@@ -63,10 +61,28 @@ public class Main
 
     public static void listAllAnimals(ArrayList<Animal> zoo)
     {
-        for(int i = 0; i < zoo.size(); i++)
+        for(int i = 1; i < zoo.size() + 1; i++)
         {
-            System.out.println((i + 1) + ". " + zoo.get(i).describe());
+            System.out.println(i + ". " + zoo.get(i - 1).describe());
         }
+    }
+
+    public static void hearAnimalSound(ArrayList<Animal> zoo, Scanner input)
+    {
+        listAllAnimals(zoo);
+        System.out.print("Which animal's sound would you like to hear? ");
+        int choice = verifyHasInt(input);
+        System.out.println(zoo.get(choice - 1)._name + " says " 
+            + zoo.get(choice - 1).makeSound());
+    }
+
+
+    // ____________________HELPER METHODS___________________
+     public static void prepopulateZoo(ArrayList<Animal> zoo, Dog d, Cat c, Bird b)
+    {
+        zoo.add(d);
+        zoo.add(c);
+        zoo.add(b);
     }
 
     public static int verifyHasInt(Scanner input)
