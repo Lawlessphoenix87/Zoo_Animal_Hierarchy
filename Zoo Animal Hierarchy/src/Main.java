@@ -60,8 +60,6 @@ public class Main
 
     public static int displayMenu(Scanner input)
     {
-        int choice;
-
         System.out.println("===== ZOO MANAGER =====");
         System.out.println("1. List all animals \n2. Hear an animal's sound " 
             + "\n3. Feed an animal \n4. Add a new animal " 
@@ -69,7 +67,8 @@ public class Main
         System.out.println("=======================");
         System.out.print("Enter choice: ");
         
-        return choice = verifyHasInt(input, 0, 6);
+        int choice = verifyHasInt(input, 0, 6);
+        return choice;
     }
 
     public static void listAllAnimals(ArrayList<Animal> zoo)
