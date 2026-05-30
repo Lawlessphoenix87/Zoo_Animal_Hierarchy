@@ -38,6 +38,9 @@ public class Main
                     break;
                 case 4:
                     addNewAnimal(zoo, input);
+                    break;
+                case 5: 
+                    showFeedingChart(zoo);
                     break; 
                 case 6:
                 {
@@ -146,6 +149,15 @@ public class Main
             Bird b = new Bird(name, age, weight, canFly);
             zoo.add(b);
             
+        }
+    }
+
+    public static void showFeedingChart(ArrayList<Animal> zoo)
+    {
+        for(int i = 0; i < zoo.size(); i++)
+        {Animal a = zoo.get(i);
+            System.out.println(a._name + " (" + a.getClass().getSimpleName()
+             + ") eats " + a.getFavoriteFood() + " and says " + a.makeSound());
         }
     }
 
