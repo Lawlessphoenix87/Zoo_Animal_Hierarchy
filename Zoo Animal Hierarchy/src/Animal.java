@@ -17,9 +17,9 @@ public abstract class Animal
     }
 
     //Accessors
-    public String GetName() {return _name;}
-    public int GetAge() {return _age;}
-    public double GetWeight() {return _weight;}
+    public String getName() {return _name;}
+    public int getAge() {return _age;}
+    public double getWeight() {return _weight;}
 
 
     // ======== METHOD LIBRARY ========
