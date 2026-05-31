@@ -94,7 +94,7 @@ public class Main
         System.out.print("Which animal would you like to feed? ");
         int choice = verifyHasInt(input, 0, zoo.size());
         Animal a = zoo.get(choice - 1);
-        System.out.println(a._name + " is eathing " + a.getFavoriteFood() + ".");
+        System.out.println(a._name + " is eating " + a.getFavoriteFood() + ".");
     }
 
     public static void addNewAnimal(ArrayList<Animal> zoo, Scanner input)
@@ -171,26 +171,27 @@ public class Main
 
     public static int verifyHasInt(Scanner input, int low, int hi)
     { 
-        int choice = 0;
-        if(input.hasNextInt())// checks if the input has an int
-        {
-            choice = input.nextInt();
-            input.nextLine();
-            if(choice > low && choice <= hi)// checks that the choice is in range
+        int choice;
+
+        while(true)
+        {    
+            if(input.hasNextInt())// checks if the input has an int
             {
-                return choice;
+                choice = input.nextInt();
+                input.nextLine();
+
+                if(choice >= low && choice <= hi)// checks that the choice is in range
+                {
+                    return choice;
+                }
             }
             else
             {
-                System.out.println("Invalid choice. Please try again."); //displays if choice is out of range
                 input.next();
-            }    
-        }
-        else
-        {
+            }        
+
             System.out.println("Invalid choice. Please try again.");// displays if not an int
-            input.nextLine();
+            
         }
-        return choice;
     }
 }
